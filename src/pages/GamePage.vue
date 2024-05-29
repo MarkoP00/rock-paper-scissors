@@ -42,14 +42,14 @@
                 <!-- computer choice image -->
                 <div class="topElements"> 
                     <h3>Computer</h3>
-                    <img src="/images/rock.png" alt="" loading="lazy">
+                    <img :src="rockImage" alt="" loading="lazy">
                 </div>
                 <div class="score" style="text-align: center;">
                     <p>{{ userScore }} : {{ computerScore }}</p>
                 </div>
                 <!-- user choice image -->
                 <div class="bottomElements"> 
-                    <img src="/images/rock.png" alt="" loading="lazy">
+                    <img :src="rockImage" alt="" loading="lazy">
                     <h3>User</h3>
                 </div>
                 <!-- options -->
