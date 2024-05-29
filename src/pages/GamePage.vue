@@ -72,7 +72,7 @@
     const message = ref('');
 
     const baseUrl = process.env.BASE_URL || '/';
-    const videoSrc = `${baseUrl}images/video/menugif.mp4`; 
+    const videoSrc = `${baseUrl}images/video/bgvid.mp4`; 
     const rockImage = `${baseUrl}images/rock.png`;
     const scissorsImage = `${baseUrl}images/scissors.png`;
     const paperImage = `${baseUrl}images/paper.png`;
