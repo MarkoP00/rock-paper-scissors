@@ -1,6 +1,6 @@
 <template> 
 <div class="container">
-    <video src="/images/video/bgvid.mp4" autoplay loop muted></video>
+    <video :src="videoSrc" autoplay loop muted></video>
 </div>
 
 <GamePopup v-if="title" :title="title" :message="message" :buttonText="'Play again!'" @close-event="closePopup"></GamePopup>
@@ -31,9 +31,9 @@
             </div>
                 <!-- options -->
                 <div class="options">
-                    <img src="/images/rock.png" alt="Rock" @click="selectChoice(0)" loading="lazy">
-                    <img src="/images/scissors.png" alt="Scissors" @click="selectChoice(1)" loading="lazy">
-                    <img src="/images/paper.png" alt="Paper" @click="selectChoice(2)"  loading="lazy">
+                    <img :src="rockImage" alt="Rock" @click="selectChoice(0)" loading="lazy">
+                    <img :src="scissorsImage" alt="Scissors" @click="selectChoice(1)" loading="lazy">
+                    <img :src="paperImage" alt="Paper" @click="selectChoice(2)"  loading="lazy">
                 </div>
             </div>
             <!-- mobile view -->
@@ -53,9 +53,9 @@
                 </div>
                 <!-- options -->
                 <div class="options">
-                    <img src="/images/rock.png" alt="Rock" @click="selectChoice(0)" loading="lazy">
-                    <img src="/images/scissors.png" alt="Scissors" @click="selectChoice(1)" loading="lazy">
-                    <img src="/images/paper.png" alt="Paper" @click="selectChoice(2)" loading="lazy">
+                    <img :src="rockImage" alt="Rock" @click="selectChoice(0)" loading="lazy">
+                    <img :src="scissorsImage" alt="Scissors" @click="selectChoice(1)" loading="lazy">
+                    <img :src="paperImage" alt="Paper" @click="selectChoice(2)" loading="lazy">
                 </div>
             </div>
         </main>
@@ -69,6 +69,12 @@
 
     const title = ref('');
     const message = ref('');
+
+    const baseUrl = process.env.BASE_URL || '/';
+    const videoSrc = `${baseUrl}images/video/menugif.mp4`; 
+    const rockImage = `${baseUrl}images/rock.png`;
+    const scissorsImage = `${baseUrl}images/scissors.png`;
+    const paperImage = `${baseUrl}images/paper.png`;
 
     let userScore = ref(0);
     let userChoice = ref('');
@@ -90,15 +96,15 @@
 
         //changing user's choice image
         userChoice.value = choices[index];
-        userChoiceImage.src = `/images/${userChoice.value}.png`;
-        userMobileChoice.src = `/images/${userChoice.value}.png`;
+        userChoiceImage.src = `${baseUrl}images/${userChoice.value}.png`;
+        userMobileChoice.src = `${baseUrl}images/${userChoice.value}.png`;
 
         // computer choice
         const computerChoiceImage = document.querySelector('.opponentSide img');
         const computerMobileChoice = document.querySelector('.topElements img')
         computerChoice.value = choices[Math.floor(Math.random() * 3)];
-        computerChoiceImage.src = `/images/${computerChoice.value}.png`;
-        computerMobileChoice.src = `/images/${computerChoice.value}.png`;
+        computerChoiceImage.src = `${baseUrl}images/${computerChoice.value}.png`;
+        computerMobileChoice.src = `${baseUrl}images/${computerChoice.value}.png`;
         roundWinner()
         checkWinner()
     }
