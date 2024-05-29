@@ -240,10 +240,10 @@
         width: 100%;
     }
     .score p{
-        font-size: 80px;
+        font-size: 70px;
         color:#fff;
         background-color: rgba(255,255,255,0.3);
-        padding: 20px;
+        padding: 15px;
     }
     .userSide,
     .opponentSide {
@@ -279,10 +279,11 @@
     }
     .topElements h3, .bottomElements h3{
         font-size: 40px;
+        margin: 10px ;
         color:#fff;
     }
     .topElements img, .bottomElements img{
-        height: 180px;
+        height: 150px;
     }
     .options img{
         height: 80px;
