@@ -19,14 +19,14 @@
             <div class="gameUi">
                 <!-- user choice image -->
                 <div class="userSide">
-                    <img src="/images/rock.png" alt="" style="transform: rotateY(180deg);" loading="lazy">
+                    <img :src="rockImage" alt="" style="transform: rotateY(180deg);" loading="lazy">
                 </div>
                 <div class="score">
                     <p>{{ userScore }} : {{ computerScore }}</p>
                 </div>
                 <!-- computer choice image -->
                 <div class="opponentSide">
-                    <img src="/images/rock.png" alt="" loading="lazy">
+                    <img :src="rockImage" alt="" loading="lazy">
                 </div>
             </div>
                 <!-- options -->
@@ -36,6 +36,7 @@
                     <img :src="paperImage" alt="Paper" @click="selectChoice(2)"  loading="lazy">
                 </div>
             </div>
+
             <!-- mobile view -->
             <div class="mobileView">
                 <!-- computer choice image -->
