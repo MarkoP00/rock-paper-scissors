@@ -1,6 +1,6 @@
 <template> 
 <div class="container">
-    <video src="/images/video/bgvid.mp4" autoplay loop muted></video>
+    <video src="./images/video/bgvid.mp4" autoplay loop muted></video>
 </div>
 
 <GamePopup v-if="title" :title="title" :message="message" :buttonText="'Play again!'" @close-event="closePopup"></GamePopup>
