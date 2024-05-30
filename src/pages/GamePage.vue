@@ -138,10 +138,8 @@
         month: '2-digit',
         day: '2-digit'
     };
-
     let today = new Date();
-    let formattedDate = today.toLocaleDateString(options).replace(/\//g, '.').replace(/\s/g, '');
-console.log(formattedDate);
+    let formattedDate = formatDate(today);
 
     let randomMessageNumber = Math.floor(Math.random() * 3);
 
@@ -191,6 +189,18 @@ console.log(formattedDate);
         }
     }
 }
+function formatDate(date) {
+    let options = {
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit'
+    };
+
+    let dateString = date.toLocaleDateString(options).replace(/\//g, '.').replace(/\s/g, ''); // Using 'en-GB' locale for consistent DD/MM/YYYY format
+    return dateString;
+}
+
+
     //closing popup message and reseting the game
     function closePopup(){
         title.value = '';
