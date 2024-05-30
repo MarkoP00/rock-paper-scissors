@@ -121,7 +121,6 @@
         scissors: 'paper',
         paper: 'rock'
     };
-    console.log(winningCombinations[userChoice.value]);
 
     if (winningCombinations[userChoice.value] === computerChoice.value) {
         userScore.value += 1;
@@ -138,8 +137,9 @@
         month: '2-digit',
         day: '2-digit'
     };
+
     let today = new Date();
-    let formattedDate = formatDate(today);
+    let formattedDate = today.toLocaleDateString(options).replace(/\//g, '.').replace(/\s/g, '');
 
     let randomMessageNumber = Math.floor(Math.random() * 3);
 
@@ -180,27 +180,15 @@
         const body = {
             userScore: userScore.value,
             computerScore: computerScore.value,
-            date: today
-
+            date: formattedDate
         }
+
         const response = fetchService.post('results.json', body);
         if(response){
             console.log('Round finished');
         }
     }
 }
-function formatDate(date) {
-    let options = {
-        year: 'numeric',
-        month: '2-digit',
-        day: '2-digit'
-    };
-
-    let dateString = date.toLocaleDateString(options).replace(/\//g, '.').replace(/\s/g, ''); // Using 'en-GB' locale for consistent DD/MM/YYYY format
-    return dateString;
-}
-
-
     //closing popup message and reseting the game
     function closePopup(){
         title.value = '';
