@@ -107,9 +107,9 @@
         height: 100%;
     }
     .history ul{
-    max-height: 300px;
-    overflow-y: auto;
-}
+        max-height: 300px;
+        overflow-y: auto;
+    }
     .history ul::-webkit-scrollbar {
         width: 12px;
     }
@@ -156,7 +156,6 @@
 	color: #fff;
 	font-style: italic;
     font-family: 'Poppins', sans-serif;
-
 }
 /* button styles */
 .button {
@@ -205,8 +204,15 @@
     }
     @media(max-width: 450px){
         main{
-        max-width: 255px;
-
+            max-width: 260px;
+        }
+        .history ul li span{
+            margin: 0.2rem;
+            width: 100%;
+            font-size: 15px;
+        }
+        .history ul li small{
+            font-size: 15px;
         }
     }
 

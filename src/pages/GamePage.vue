@@ -1,6 +1,6 @@
 <template> 
 <div class="container">
-    <video src="/images/video/bgvid.mp4" autoplay loop muted></video>
+    <video :src="videoSrc" autoplay loop muted></video>
 </div>
 
 <GamePopup v-if="title" :title="title" :message="message" :buttonText="'Play again!'" @close-event="closePopup"></GamePopup>
@@ -19,43 +19,44 @@
             <div class="gameUi">
                 <!-- user choice image -->
                 <div class="userSide">
-                    <img src="/images/rock.png" alt="" style="transform: rotateY(180deg);" loading="lazy">
+                    <img :src="rockImage" alt="" style="transform: rotateY(180deg);" loading="lazy">
                 </div>
                 <div class="score">
                     <p>{{ userScore }} : {{ computerScore }}</p>
                 </div>
                 <!-- computer choice image -->
                 <div class="opponentSide">
-                    <img src="/images/rock.png" alt="" loading="lazy">
+                    <img :src="rockImage" alt="" loading="lazy">
                 </div>
             </div>
                 <!-- options -->
                 <div class="options">
-                    <img src="/images/rock.png" alt="Rock" @click="selectChoice(0)" loading="lazy">
-                    <img src="/images/scissors.png" alt="Scissors" @click="selectChoice(1)" loading="lazy">
-                    <img src="/images/paper.png" alt="Paper" @click="selectChoice(2)"  loading="lazy">
+                    <img :src="rockImage" alt="Rock" @click="selectChoice(0)" loading="lazy">
+                    <img :src="scissorsImage" alt="Scissors" @click="selectChoice(1)" loading="lazy">
+                    <img :src="paperImage" alt="Paper" @click="selectChoice(2)"  loading="lazy">
                 </div>
             </div>
+
             <!-- mobile view -->
             <div class="mobileView">
                 <!-- computer choice image -->
                 <div class="topElements"> 
                     <h3>Computer</h3>
-                    <img src="/images/rock.png" alt="" loading="lazy">
+                    <img :src="rockImage" alt="" loading="lazy">
                 </div>
                 <div class="score" style="text-align: center;">
                     <p>{{ userScore }} : {{ computerScore }}</p>
                 </div>
                 <!-- user choice image -->
                 <div class="bottomElements"> 
-                    <img src="/images/rock.png" alt="" loading="lazy">
+                    <img :src="rockImage" alt="" loading="lazy">
                     <h3>User</h3>
                 </div>
                 <!-- options -->
                 <div class="options">
-                    <img src="/images/rock.png" alt="Rock" @click="selectChoice(0)" loading="lazy">
-                    <img src="/images/scissors.png" alt="Scissors" @click="selectChoice(1)" loading="lazy">
-                    <img src="/images/paper.png" alt="Paper" @click="selectChoice(2)" loading="lazy">
+                    <img :src="rockImage" alt="Rock" @click="selectChoice(0)" loading="lazy">
+                    <img :src="scissorsImage" alt="Scissors" @click="selectChoice(1)" loading="lazy">
+                    <img :src="paperImage" alt="Paper" @click="selectChoice(2)" loading="lazy">
                 </div>
             </div>
         </main>
@@ -69,6 +70,12 @@
 
     const title = ref('');
     const message = ref('');
+
+    const baseUrl = process.env.BASE_URL || '/';
+    const videoSrc = `${baseUrl}images/video/bgvid.mp4`; 
+    const rockImage = `${baseUrl}images/rock.png`;
+    const scissorsImage = `${baseUrl}images/scissors.png`;
+    const paperImage = `${baseUrl}images/paper.png`;
 
     let userScore = ref(0);
     let userChoice = ref('');
@@ -90,15 +97,15 @@
 
         //changing user's choice image
         userChoice.value = choices[index];
-        userChoiceImage.src = `/images/${userChoice.value}.png`;
-        userMobileChoice.src = `/images/${userChoice.value}.png`;
+        userChoiceImage.src = `${baseUrl}images/${userChoice.value}.png`;
+        userMobileChoice.src = `${baseUrl}images/${userChoice.value}.png`;
 
         // computer choice
         const computerChoiceImage = document.querySelector('.opponentSide img');
         const computerMobileChoice = document.querySelector('.topElements img')
         computerChoice.value = choices[Math.floor(Math.random() * 3)];
-        computerChoiceImage.src = `/images/${computerChoice.value}.png`;
-        computerMobileChoice.src = `/images/${computerChoice.value}.png`;
+        computerChoiceImage.src = `${baseUrl}images/${computerChoice.value}.png`;
+        computerMobileChoice.src = `${baseUrl}images/${computerChoice.value}.png`;
         roundWinner()
         checkWinner()
     }
@@ -121,7 +128,6 @@
         computerScore.value += 1;
     }
 }
-
 
     // showing popup message
     async function checkWinner(){
@@ -185,7 +191,7 @@
 
 <style scoped>
     section {
-        min-height: 100vh;
+        min-height: 100svh;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -233,10 +239,10 @@
         width: 100%;
     }
     .score p{
-        font-size: 80px;
+        font-size: 70px;
         color:#fff;
         background-color: rgba(255,255,255,0.3);
-        padding: 20px;
+        padding: 15px;
     }
     .userSide,
     .opponentSide {
@@ -272,10 +278,11 @@
     }
     .topElements h3, .bottomElements h3{
         font-size: 40px;
+        margin: 10px ;
         color:#fff;
     }
     .topElements img, .bottomElements img{
-        height: 180px;
+        height: 150px;
     }
     .options img{
         height: 80px;
@@ -302,23 +309,25 @@
         }
         .mobileView{
             padding: 10px;
+            gap: 10px;
         }
     }
     @media(min-width: 420px){
         .mobileView{
             padding: 10px 20px;
         }
-        .topElements h3{
-            margin-bottom: 15px;
-        }
         .bottomElements h3{
             margin-top: 10px;
         }
     }
+
     @media(min-width: 767px){
         main{
             min-width: 80%;
         } 
+        .mobileView{
+            gap: 20px;
+        }
     }
     @media(min-width: 1439px){
         .pcView {
@@ -329,7 +338,6 @@
         .mobileView{
             display: none;
         }
-        
         .options {
             gap: 50px;
         }

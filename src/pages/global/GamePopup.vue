@@ -38,14 +38,15 @@ const styledMessage = computed(() => {
 function showEvent(){
     popupVisible.value = true
 }
+
 function closeEvent(){
     popupVisible.value = false;
 
     setTimeout(() => {
         emits('close-event')
     }, 400);
-
 }
+
 onMounted(() => {
     showEvent()
 })
@@ -130,6 +131,7 @@ onMounted(() => {
     @media(max-width: 450px){
         main{
             max-width: 255px;
+            font-size: 17px;
         }
     }
 

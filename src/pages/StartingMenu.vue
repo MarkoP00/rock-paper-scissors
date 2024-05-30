@@ -1,7 +1,7 @@
 <template>
     <HistoryPage v-if="historyVisible" @close-history="closePopup"></HistoryPage>
     <div class="container">
-        <video :src="videoSrc" autoplay loop muted></video>
+         <video :src="videoSrc" autoplay loop muted></video>
     </div>
     <GamePopup v-if="title" :title="title" :message="message" @close-event="closePopup"></GamePopup>
     <section v-if="!title && !historyVisible">
@@ -42,8 +42,7 @@
     const title = ref('');
     const message = ref('');
     const historyVisible = ref(false)
-    const baseUrl = process.env.BASE_URL || '/';
-    const videoSrc = `${baseUrl}images/video/menugif.mp4`;  
+   
     function navigate(){
         router.push('/game')
     }
@@ -64,7 +63,7 @@
 
 <style scoped>
     section {
-        min-height: 100vh;
+        min-height: 100svh;
         width: 100%;
         display: flex;
         justify-content: center;
