@@ -46,7 +46,6 @@
                 const scoreData = response[key].body;
                 fetchData.push(scoreData);
             });
-            console.log(fetchData);
         }
     }
     function showEvent(){

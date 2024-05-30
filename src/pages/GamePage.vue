@@ -131,16 +131,10 @@
 
     // showing popup message
     async function checkWinner(){
-    
-    let options = {
-        year: 'numeric',
-        month: '2-digit',
-        day: '2-digit'
-    };
 
     let today = new Date();
-    let formattedDate = today.toLocaleDateString(options).replace(/\//g, '.').replace(/\s/g, '');
-
+    let formattedDate = today.toLocaleDateString().replace(/\//g, '.').replace(/\s/g, '');
+    
     let randomMessageNumber = Math.floor(Math.random() * 3);
 
     const messagesData = [
