@@ -129,7 +129,6 @@
     }
 }
 
-
     // showing popup message
     async function checkWinner(){
     
@@ -192,7 +191,7 @@
 
 <style scoped>
     section {
-        min-height: 100vh;
+        min-height: 100svh;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -310,23 +309,25 @@
         }
         .mobileView{
             padding: 10px;
+            gap: 10px;
         }
     }
     @media(min-width: 420px){
         .mobileView{
             padding: 10px 20px;
         }
-        .topElements h3{
-            margin-bottom: 15px;
-        }
         .bottomElements h3{
             margin-top: 10px;
         }
     }
+
     @media(min-width: 767px){
         main{
             min-width: 80%;
         } 
+        .mobileView{
+            gap: 20px;
+        }
     }
     @media(min-width: 1439px){
         .pcView {
@@ -337,7 +338,6 @@
         .mobileView{
             display: none;
         }
-        
         .options {
             gap: 50px;
         }
