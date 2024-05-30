@@ -42,7 +42,10 @@
     const title = ref('');
     const message = ref('');
     const historyVisible = ref(false)
-   
+    
+    const baseUrl = process.env.BASE_URL || '/';
+    const videoSrc = `${baseUrl}images/video/menugif.mp4`; 
+
     function navigate(){
         router.push('/game')
     }

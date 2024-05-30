@@ -121,6 +121,7 @@
         scissors: 'paper',
         paper: 'rock'
     };
+    console.log(winningCombinations[userChoice.value]);
 
     if (winningCombinations[userChoice.value] === computerChoice.value) {
         userScore.value += 1;
@@ -132,7 +133,16 @@
     // showing popup message
     async function checkWinner(){
     
-    let today = new Date().toLocaleDateString()
+    let options = {
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit'
+    };
+
+    let today = new Date();
+    let formattedDate = today.toLocaleDateString(options).replace(/\//g, '.').replace(/\s/g, '');
+console.log(formattedDate);
+
     let randomMessageNumber = Math.floor(Math.random() * 3);
 
     const messagesData = [
@@ -158,7 +168,7 @@
         const body = {
             userScore: userScore.value,
             computerScore: computerScore.value,
-            date: today
+            date: formattedDate
         }
         const response = fetchService.post('results.json', body);
         if(response){
