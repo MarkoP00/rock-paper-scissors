@@ -2,6 +2,7 @@
     <HistoryPage v-if="historyVisible" @close-history="closePopup"></HistoryPage>
     <div class="container">
          <video :src="videoSrc" autoplay loop muted></video>
+         <audio :src="audioSrc" autoplay loop></audio>
     </div>
     <GamePopup v-if="title" :title="title" :message="message" @close-event="closePopup"></GamePopup>
     <section v-if="!title && !historyVisible">
@@ -45,7 +46,7 @@
     
     const baseUrl = process.env.BASE_URL || '/';
     const videoSrc = `${baseUrl}images/video/menugif.mp4`; 
-
+    const audioSrc = `${baseUrl}music/GameTheme.mpeg`;
     function navigate(){
         router.push('/game')
     }
